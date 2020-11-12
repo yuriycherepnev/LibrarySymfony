@@ -13,13 +13,13 @@ class EditController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit")
      */
-    public function edit($id, Library $Library, EntityManagerInterface $em): Response
+    public function edit(int $id, Library $Library, EntityManagerInterface $em): Response
     {
         $repository = $em->getRepository(Library::class);
         $book = $repository->findOneBy(['id'=>$id ]);
 
         if (isset($_GET['edit']) ) {
-            if ($_GET['edit'] == 'edit') {
+            if ($_GET['edit'] === 'edit') {
                 if ($_GET['author'] !== '' and $_GET['book'] !== '' and $_GET['year'] !== '') {
                     if (is_numeric($_GET['year'])) {
                         $book->setAuthor($_GET['author']);
@@ -36,7 +36,7 @@ class EditController extends AbstractController
                     $message = 'Все поля должны быть заполнены!';
                     return $this->render('edit/index.html.twig', ['message' => $message, 'book'=>$book]);
                 }
-            } else if ($_GET['edit'] == 'delete') {
+            } else if ($_GET['edit'] === 'delete') {
                 $em->remove($Library);
                 $em->flush();
                 return $this->redirectToRoute('successDelete');
