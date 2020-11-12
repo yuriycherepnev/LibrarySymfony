@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}<link rel="stylesheet" href="{{ asset('asset/css/main.css') }}"/>{% endblock %}
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body class="body">
+  <div class="menu">
+    <a href="{{ path('list') }}">список книг</a>
+    <a href="{{ path('book') }}">добавить книгу</a>
+  </div>
+ 
+  {% block body %}{% endblock %}
+  {% block javascripts %}{% endblock %}
+</body>
+</html>

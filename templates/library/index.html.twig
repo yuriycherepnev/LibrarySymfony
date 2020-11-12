@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="list">
+    <ul>
+        {% for li in list %}
+            <li>{{ li.author }} "{{ li.book }}" издание {{ li.year }}г. <a href="/edit/{{ li.id }}">редактировать</a></li>
+        {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

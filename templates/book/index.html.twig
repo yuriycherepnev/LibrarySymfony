@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="book">
+  <form action="{{ path('add_book') }}" method="get">
+   <p>Форма добавления книги</p>
+      <label>
+          <input type="text" name="author" value="" placeholder="автор"/>
+      </label>
+      <label>
+          <input type="text" name="book" value="" placeholder="название книги"/>
+      </label>
+      <label>
+          <input type="text" name="year" value="" placeholder="год издания"/>
+      </label>
+      <button class="button">загрузить</button>
+  </form>
+    {% if message is defined %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+</div>
+{% endblock %}

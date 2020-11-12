@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="book">
+        <form action="/edit/{{ book.id }}" method="get">
+            <p>Форма редактирования книги</p>
+            <label>
+                <input type="text" name="author" value="{% if book.author is defined %}{{ book.author }}{% endif %}" placeholder=""/>
+            </label>
+            <label>
+                <input type="text" name="book" value="{% if book.book is defined %}{{ book.book }}{% endif %}" placeholder=""/>
+            </label>
+            <label>
+                <input type="text" name="year" value="{% if book.year is defined %}{{ book.year }}{% endif %}" placeholder=""/>
+            </label>
+            <button class="button" name="edit" value="edit">редактировать</button>
+            <button class="button" name="edit" value="delete">удалить</button>
+        </form>
+        {% if message is defined %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
